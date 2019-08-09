@@ -9,24 +9,32 @@
 
             <p>Click the button to get your coordinates.</p>
             
-            <button onclick="getLocation()">Try It</button>
+            <button onclick="getwatchloca()">Try It</button>
             
             
             <p id="msg"></p>
             <p id="test"></p>
-            <p id="demo"></p>
+            <p id="Latitude"></p>
+            <p id="Longitude"></p>
+            <p id="Latitude+Longitude"></p>
+            <p id="altitude"></p>
+            <p id="accuracy"></p>
+  
 
             
             <script>
             var x = document.getElementById("demo");
             
-            function watchLocation(){
+            function getwatchloca(){
                     window.navigator.geolocation.watchPosition(handleData,handleError);
             }
         
-            function handleData(geoDataWatch){
-                concole.log(geoDataWatch);
-                
+            function handleData(watchData){
+               document.getElementById("Latitude").innerHTML = watchData.coords.latitude;
+               document.getElementById("Longitude").innerHTML = watchData.coords.longitude;
+               document.getElementById("accuracy").innerHTML = watchData.coords.accuracy;
+               document.getElementById("altitude").innerHTML = watchData.coords.altitude;
+                console.log(watchData);
             }
 
             function handleError(error){
@@ -39,7 +47,7 @@
 
             function getLocation() {
                 if (navigator.geolocation) {
-                    navigator.geolocation.getCurrentPositoin(showPosition);
+                    navigator.geolocation.getCurrentPosition(showPosition);
                 } else { 
                     x.innerHTML = "Geolocation is not supported by this browser.";
                 }

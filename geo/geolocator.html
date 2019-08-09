@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <body>
+
+            <p>Click the button to get your coordinates.</p>
+            
+            <button onclick="getLocation()">Try It</button>
+            
+            <p id="demo"></p>
+            
+            <script>
+            var x = document.getElementById("demo");
+            
+            function getLocation() {
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(showPosition);
+                } else { 
+                    x.innerHTML = "Geolocation is not supported by this browser.";
+                }
+            }
+            function showPosition(position) {
+                timed = position.timestamp;
+                var d = new Date(timed);
+                        var hours = d.getHours(),
+                            minutes = d.getMinutes(),
+                            seconds = d.getSeconds(),
+                            month = d.getMonth() + 1,
+                            day = d.getDate(),
+                            year = d.getFullYear() % 100;
+
+                        function pad(d) {
+                            return (d < 10 ? "0" : "") + d;
+                        }
+
+                        var formattedDate =
+                                        pad(day) + "-"
+                                        + pad(month) + "-"
+                                        + pad(year);
+
+                        var formattedTime = pad(hours) + ":"
+                                        + pad(minutes) + ":"
+                                        + pad(seconds) + " "
+                              
+
+                x.innerHTML = "Latitude: " + position.coords.latitude + 
+                "<br>Longitude: " + position.coords.longitude + 
+                "<br>Log Lat Accuracy  : " + position.coords.accuracy +
+                "<br>Altitude : " + position.coords.altitude +
+                "<br>Altitude Accuracy   : " + position.coords.altitudeAccuracy +
+                "<br>timestamp   : " + Date(timed) +
+                "<br>Date   : " + formattedDate +
+                "<br>Time   : " + formattedTime;
+            }
+
+            </script>
+            
+            </body>
+            </html>

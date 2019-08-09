@@ -30,10 +30,10 @@
             }
         
             function handleData(watchData){
-               document.getElementById("Latitude").innerHTML = watchData.coords.latitude;
-               document.getElementById("Longitude").innerHTML = watchData.coords.longitude;
-               document.getElementById("accuracy").innerHTML = watchData.coords.accuracy;
-               document.getElementById("altitude").innerHTML = watchData.coords.altitude;
+               document.getElementById("Latitude").value = watchData.coords.latitude;
+               document.getElementById("Longitude").value = watchData.coords.longitude;
+               document.getElementById("accuracy").value = watchData.coords.accuracy;
+               document.getElementById("altitude").value = watchData.coords.altitude;
                 console.log(watchData);
             }
 

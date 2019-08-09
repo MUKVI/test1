@@ -11,14 +11,35 @@
             
             <button onclick="getLocation()">Try It</button>
             
+            
+            <p id="msg"></p>
+            <p id="test"></p>
             <p id="demo"></p>
+
             
             <script>
             var x = document.getElementById("demo");
             
+            function watchLocation(){
+                    window.navigator.geolocation.watchPosition(handleData,handleError);
+            }
+        
+            function handleData(geoDataWatch){
+                concole.log(geoDataWatch);
+                
+            }
+
+            function handleError(error){
+                document.getElementById("msg").innerHTML.error.message;
+
+            }
+
+
+
+
             function getLocation() {
                 if (navigator.geolocation) {
-                    navigator.geolocation.watchPosition(showPosition);
+                    navigator.geolocation.getCurrentPositoin(showPosition);
                 } else { 
                     x.innerHTML = "Geolocation is not supported by this browser.";
                 }
